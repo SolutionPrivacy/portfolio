@@ -44,7 +44,7 @@ export function Hero() {
     <section
       ref={ref}
       id="poczatek"
-      className={reduce ? "relative h-[100svh]" : "relative h-[165svh]"}
+      className="relative h-[100svh]"
     >
       <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden px-6">
         <motion.div
