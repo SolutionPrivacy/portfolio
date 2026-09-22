@@ -47,12 +47,11 @@ export function Hero() {
       className="relative h-[100svh]"
     >
       <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden px-6">
-        <motion.div
+                <motion.div
           initial={{ opacity: 0, scale: 0.94, y: 14 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.7, ease: silk, delay: 0.15 }}
-          style={
-            style={undefined}
+          style={undefined}
           className="w-[min(82vw,34rem)]"
         >
           <Logo className="h-auto w-full" />
