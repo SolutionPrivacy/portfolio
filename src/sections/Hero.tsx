@@ -23,9 +23,6 @@ export function Hero() {
   });
 
   // Logo znika pierwsze i najszybciej.
-  const logoOpacity = useTransform(scrollYProgress, [0, 0.42], [1, 0]);
-  const logoScale = useTransform(scrollYProgress, [0, 0.42], [1, 0.9]);
-  const logoY = useTransform(scrollYProgress, [0, 0.42], [0, -70]);
 
   // Slogan chwilę później.
   const leadOpacity = useTransform(scrollYProgress, [0.05, 0.5], [1, 0]);
