@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: dark; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-wegiel font-body font-light text-krem antialiased;
+  }
+
+  ::selection { @apply bg-zar/40 text-krem; }
+
+  :focus-visible {
+    @apply outline-none ring-1 ring-zloto ring-offset-2 ring-offset-wegiel;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .shell { @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12; }
+
+  .hairline {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, rgba(217,164,65,0.4), transparent);
+  }
+
+  /* Ciemna, półprzezroczysta warstwa — treść czytelna na zdjęciu w tle. */
+  .glass {
+    background: linear-gradient(180deg, rgba(20,16,14,0.62), rgba(20,16,14,0.74));
+    backdrop-filter: blur(6px);
+  }
+}
+
+@media (pointer: fine) {
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #0B0908; }
+  ::-webkit-scrollbar-thumb {
+    background: #241B16;
+    border: 3px solid #0B0908;
+    border-radius: 999px;
+  }
+}
