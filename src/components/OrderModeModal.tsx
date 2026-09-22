@@ -116,7 +116,7 @@ export function OrderModeModal({ open, onClose, onConfirm }: Props) {
             exit={{ opacity: 0, y: 24 }}
             transition={{ duration: 0.5, ease: silk }}
             layout
-            className="max-h-[92svh] w-full overflow-y-auto border-t border-zloto/20 bg-sadza px-6 py-9 sm:max-w-lg sm:border sm:px-10 sm:py-11"
+            className="max-h-[92svh] w-full overflow-y-auto border-t border-zloto/20 bg-sadza px-6 py-5 sm:max-w-lg sm:border sm:px-10 sm:py-7"
           >
             <h2 className="font-display text-2xl font-light leading-snug text-krem">
               Zanim rozpoczniesz zakupy, daj nam znać, jak chcesz otrzymać swoje
