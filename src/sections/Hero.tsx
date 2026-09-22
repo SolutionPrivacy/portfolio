@@ -52,8 +52,7 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.7, ease: silk, delay: 0.15 }}
           style={
-            reduce ? undefined : { opacity: logoOpacity, scale: logoScale, y: logoY }
-          }
+            style={undefined}
           className="w-[min(82vw,34rem)]"
         >
           <Logo className="h-auto w-full" />
