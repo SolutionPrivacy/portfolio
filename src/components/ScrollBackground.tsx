@@ -63,6 +63,9 @@ function Layer({ layer, index, total, progress, reduce }: LayerProps) {
     reduce ? [1, 1] : [1.1, 1],
   );
 
+  // Paralaksa: tło dryfuje wolniej niż treść (warstwa jest większa niż ekran).
+  const y = useTransform(progress, [0, 1], reduce ? ["0%", "0%"] : ["-6%", "6%"]);
+
   useEffect(() => {
     const img = new Image();
     img.src = layer.src;
@@ -77,10 +80,11 @@ function Layer({ layer, index, total, progress, reduce }: LayerProps) {
       style={{
         opacity: reduce && index > 0 ? 0 : opacity,
         scale,
+        y,
         backgroundImage: `url(${layer.src})`,
         backgroundPosition: layer.focus ?? "center",
       }}
-      className="absolute inset-0 bg-cover bg-no-repeat"
+      className="absolute -inset-y-[8%] inset-x-0 bg-cover bg-no-repeat"
     />
   );
 }

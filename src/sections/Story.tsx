@@ -1,3 +1,4 @@
+import { Parallax } from "@/components/Parallax";
 import { Reveal, RevealItem, Stagger } from "@/components/Reveal";
 
 /** Opis pochodzi z oficjalnej strony Pizzerii Bona. */
@@ -13,6 +14,7 @@ export function Story() {
   return (
     <section id="historia" className="relative py-28 sm:py-40">
       <div className="shell">
+        <Parallax distance={40}>
         <div className="glass mx-auto max-w-4xl px-7 py-16 sm:px-14 sm:py-20">
           <Reveal>
             <p className="text-[0.7rem] tracking-wide3 text-zar">O nas</p>
@@ -41,6 +43,7 @@ export function Story() {
             </div>
           </Reveal>
         </div>
+        </Parallax>
       </div>
     </section>
   );

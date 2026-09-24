@@ -22,7 +22,8 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Logo znika pierwsze i najszybciej.
+  // Logo odjeżdża najwolniej (najdalsza warstwa), reszta szybciej — głębia.
+  const logoY = useTransform(scrollYProgress, [0, 1], [0, 90]);
 
   // Slogan chwilę później.
   const leadOpacity = useTransform(scrollYProgress, [0.05, 0.5], [1, 0]);
@@ -48,7 +49,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.94, y: 14 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.7, ease: silk, delay: 0.15 }}
-          style={undefined}
+          style={reduce ? undefined : { y: logoY }}
           className="w-[min(82vw,34rem)]"
         >
           <Logo className="h-auto w-full" />
