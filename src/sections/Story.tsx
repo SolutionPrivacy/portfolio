@@ -1,4 +1,5 @@
 import { Parallax } from "@/components/Parallax";
+import { site } from "@/data/site";
 import { Reveal, RevealItem, Stagger } from "@/components/Reveal";
 
 /** Opis pochodzi z oficjalnej strony Pizzerii Bona. */
@@ -37,7 +38,7 @@ export function Story() {
 
           <Reveal delay={0.15} className="mt-14">
             <div className="flex flex-wrap gap-x-14 gap-y-8 border-t border-krem/10 pt-10">
-              <Stat value="2019" label="Rok otwarcia" />
+              {site.founded && <Stat value={String(site.founded)} label="Rok założenia" />}
               <Stat value="4,1 / 5" label="Średnia ocena w Google" />
               <Stat value="900+" label="Opinii w sieci" />
             </div>

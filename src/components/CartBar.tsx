@@ -129,7 +129,7 @@ export function CartBar() {
                   <button
                     type="button"
                     onClick={applyCode}
-                    className="border border-zloto/40 px-4 py-2.5 text-[0.75rem] tracking-wide2 text-zloto transition-colors duration-400 hover:bg-zloto/10"
+                    className="btn-ghost px-4 py-2.5 text-[0.75rem] tracking-wide2 text-zloto"
                   >
                     Użyj
                   </button>
@@ -158,7 +158,7 @@ export function CartBar() {
                     setOpen(false);
                     navigate("/kasa");
                   }}
-                  className="mt-5 w-full bg-zar px-7 py-4 text-[0.82rem] tracking-wide2 text-krem transition-colors duration-400 hover:bg-zar/85"
+                  className="mt-5 w-full btn-primary px-7 py-4 text-[0.82rem] tracking-wide2 text-krem"
                 >
                   Przejdź do kasy
                 </button>
@@ -175,7 +175,7 @@ export function CartBar() {
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: silk }}
-        className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-5 bg-zar px-7 py-4 text-krem shadow-[0_18px_50px_rgba(0,0,0,0.55)] transition-colors duration-400 hover:bg-zar/88"
+        className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-5 btn-primary px-7 py-4 text-krem shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
         style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}
       >
         <span className="grid h-6 w-6 place-items-center rounded-full bg-krem/20 text-[0.75rem]">

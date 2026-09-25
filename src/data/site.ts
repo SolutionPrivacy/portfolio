@@ -15,6 +15,8 @@ export const site = {
   nip: "1132243993",
   orderUrl: "https://pizzeriabona.order.app.hd.digital/menus",
   facebookUrl: "https://www.facebook.com/p/Pizzeria-Bona-Sierpc-100087435266183/",
+  /** Rok założenia restauracji — uzupełnij, a pojawi się w sekcji „O nas”. */
+  founded: undefined as number | undefined,
   coords: { lat: 52.852115, lng: 19.6647425 },
 } as const;
 

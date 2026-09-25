@@ -111,13 +111,13 @@ export function MenuSection() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 to="/karta"
-                className="border border-zloto/45 px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto transition-colors duration-500 hover:border-zloto hover:bg-zloto/10"
+                className="btn-ghost px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto"
               >
                 Pełna karta
               </Link>
               <Link
                 to="/karta"
-                className="bg-zar px-9 py-4 text-[0.78rem] tracking-wide2 text-krem transition-colors duration-500 hover:bg-zar/85"
+                className="btn-primary px-9 py-4 text-[0.78rem] tracking-wide2 text-krem"
               >
                 Zobacz wszystko i zamów
               </Link>

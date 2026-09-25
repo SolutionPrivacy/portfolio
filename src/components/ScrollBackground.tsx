@@ -57,6 +57,7 @@ function Layer({ layer, index, total, progress, reduce }: LayerProps) {
   const outputRange = index === 0 ? [1, 1, 0] : [0, 1, 1, 0];
 
   const opacity = useTransform(progress, inputRange, outputRange);
+  const visibility = useTransform(opacity, (o) => (o < 0.01 ? "hidden" : "visible"));
   const scale = useTransform(
     progress,
     [start - step, start + step],
@@ -81,6 +82,8 @@ function Layer({ layer, index, total, progress, reduce }: LayerProps) {
         opacity: reduce && index > 0 ? 0 : opacity,
         scale,
         y,
+        visibility,
+        willChange: "transform, opacity",
         backgroundImage: `url(${layer.src})`,
         backgroundPosition: layer.focus ?? "center",
       }}

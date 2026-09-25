@@ -61,7 +61,7 @@ export default function CheckoutPage() {
           <div className="mt-10">
             <Link
               to="/karta"
-              className="inline-block bg-zar px-9 py-4 text-[0.8rem] tracking-wide2 text-krem hover:bg-zar/85"
+              className="inline-block btn-primary px-9 py-4 text-[0.8rem] tracking-wide2 text-krem"
             >
               Zamów coś jeszcze
             </Link>
@@ -81,7 +81,7 @@ export default function CheckoutPage() {
           <button
             type="button"
             onClick={() => navigate("/karta")}
-            className="mt-8 bg-zar px-9 py-4 text-[0.8rem] tracking-wide2 text-krem hover:bg-zar/85"
+            className="mt-8 btn-primary px-9 py-4 text-[0.8rem] tracking-wide2 text-krem"
           >
             Otwórz kartę
           </button>
@@ -201,7 +201,7 @@ export default function CheckoutPage() {
             disabled={!ready}
             whileHover={ready ? { y: -2 } : undefined}
             transition={{ duration: 0.35, ease: silk }}
-            className="mt-10 w-full bg-zar px-9 py-5 text-[0.82rem] tracking-wide2 text-krem transition-all duration-400 enabled:hover:bg-zar/85 disabled:cursor-not-allowed disabled:bg-krem/10 disabled:text-krem/50"
+            className="mt-10 w-full btn-primary px-9 py-5 text-[0.82rem] tracking-wide2 text-krem disabled:cursor-not-allowed disabled:bg-krem/10 disabled:text-krem/50"
           >
             Potwierdź
           </motion.button>

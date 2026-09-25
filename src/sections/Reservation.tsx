@@ -194,7 +194,7 @@ export function Reservation() {
                         whileHover={reduce ? undefined : { y: -2 }}
                         whileTap={reduce ? undefined : { y: 0, scale: 0.99 }}
                         transition={{ duration: 0.4, ease: silk }}
-                        className="w-full bg-zar px-10 py-5 text-[0.8rem] tracking-wide2 text-krem transition-colors duration-500 hover:bg-zar/85 disabled:opacity-50 sm:w-auto"
+                        className="w-full btn-primary px-10 py-5 text-[0.8rem] tracking-wide2 text-krem disabled:opacity-50 sm:w-auto"
                       >
                         {status === "sending" ? "Wysyłamy…" : "Wyślij rezerwację"}
                       </motion.button>

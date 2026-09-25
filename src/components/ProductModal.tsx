@@ -191,7 +191,7 @@ export function ProductModal({ pending, onClose, onAdd }: Props) {
                   onAdd(pending.dish, extras);
                   onClose();
                 }}
-                className="flex w-full items-center justify-between gap-4 bg-zar px-7 py-4 text-[0.82rem] tracking-wide2 text-krem transition-all duration-400 enabled:hover:bg-zar/85 disabled:cursor-not-allowed disabled:bg-krem/10 disabled:text-krem/50"
+                className="flex w-full items-center justify-between gap-4 btn-primary px-7 py-4 text-[0.82rem] tracking-wide2 text-krem disabled:cursor-not-allowed disabled:bg-krem/10 disabled:text-krem/50"
               >
                 <span>Dodaj do koszyka</span>
                 <span className="font-display text-base">{formatPrice(total)}</span>

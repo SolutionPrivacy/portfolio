@@ -87,13 +87,13 @@ export function Hero() {
           >
             <Link
               to="/karta"
-              className="bg-zar px-9 py-4 text-[0.78rem] tracking-wide2 text-krem transition-colors duration-500 hover:bg-zar/85"
+              className="btn-primary px-9 py-4 text-[0.78rem] tracking-wide2 text-krem"
             >
               Zamów online
             </Link>
             <a
               href="#rezerwacja"
-              className="border border-zloto/45 px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto transition-colors duration-500 hover:border-zloto hover:bg-zloto/10"
+              className="btn-ghost px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto"
             >
               Zarezerwuj stolik
             </a>

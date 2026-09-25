@@ -38,7 +38,7 @@ export default function AllergensPage() {
       <Reveal delay={0.25} duration={1.6} amount={0.05} className="mt-12">
         <Link
           to="/karta"
-          className="inline-block border border-zloto/45 px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto transition-colors duration-500 hover:border-zloto hover:bg-zloto/10"
+          className="inline-block btn-ghost px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto"
         >
           Zobacz pełną kartę
         </Link>

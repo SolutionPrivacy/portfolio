@@ -57,7 +57,7 @@ export default function HoursPage() {
 
                   <Link
             to="/karta"
-            className="inline-block bg-zar px-9 py-4 text-[0.78rem] tracking-wide2 text-krem transition-colors duration-500 hover:bg-zar/85"
+            className="inline-block btn-primary px-9 py-4 text-[0.78rem] tracking-wide2 text-krem"
           >
             Zamów online
           </Link>

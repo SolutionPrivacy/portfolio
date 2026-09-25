@@ -19,7 +19,7 @@ export default function NotFound() {
           <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
             <Link
               to="/"
-              className="border border-zloto/40 px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto transition-colors duration-700 hover:border-zloto hover:bg-zloto/10"
+              className="btn-ghost px-9 py-4 text-[0.78rem] tracking-wide2 text-zloto"
             >
               Strona główna
             </Link>

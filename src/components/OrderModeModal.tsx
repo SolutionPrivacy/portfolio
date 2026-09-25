@@ -275,7 +275,7 @@ export function OrderModeModal({ open, onClose, onConfirm }: Props) {
                 type="button"
                 disabled={!ready}
                 onClick={confirm}
-                className="flex-1 bg-zar px-8 py-4 text-[0.8rem] tracking-wide2 text-krem transition-all duration-400 enabled:hover:bg-zar/85 disabled:cursor-not-allowed disabled:bg-krem/10 disabled:text-krem/50"
+                className="flex-1 btn-primary px-8 py-4 text-[0.8rem] tracking-wide2 text-krem disabled:cursor-not-allowed disabled:bg-krem/10 disabled:text-krem/50"
               >
                 Kontynuuj
               </button>

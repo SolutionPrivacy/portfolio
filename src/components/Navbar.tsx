@@ -74,17 +74,17 @@ export function Navbar() {
               Bona
             </Link>
 
-            <ul className="hidden items-center gap-7 lg:flex">
+            <ul className="hidden items-center gap-1 lg:flex">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <button
                     type="button"
                     onClick={() => goTo(item.href)}
-                    className="group relative py-1 text-[0.8rem] font-light tracking-wide2 text-krem/82 transition-colors duration-500 hover:text-krem"
+                    className="group relative px-3.5 py-2 text-[0.8rem] font-light tracking-wide2 text-krem/82 transition-colors duration-500 hover:text-krem"
                   >
                     {item.label}
                     <motion.span
-                      className="absolute -bottom-0.5 left-0 h-px w-full origin-left bg-zar"
+                      className="absolute inset-x-3.5 bottom-1 h-px origin-left bg-zar"
                       initial={{ scaleX: 0 }}
                       whileHover={{ scaleX: 1 }}
                       transition={{ duration: 0.45, ease: silk }}
@@ -92,10 +92,10 @@ export function Navbar() {
                   </button>
                 </li>
               ))}
-              <li>
+              <li className="ml-3">
                 <Link
                   to="/karta"
-                  className="bg-zar px-5 py-2.5 text-[0.78rem] tracking-wide2 text-krem transition-colors duration-500 hover:bg-zar/85"
+                  className="btn-primary px-5 py-2.5 text-[0.78rem] tracking-wide2 text-krem"
                 >
                   Zamów online
                 </Link>
@@ -159,7 +159,7 @@ export function Navbar() {
                 <Link
                   to="/karta"
                   onClick={() => setOpen(false)}
-                  className="inline-block bg-zar px-7 py-3.5 text-[0.8rem] tracking-wide2 text-krem"
+                  className="inline-block btn-primary px-7 py-3.5 text-[0.8rem] tracking-wide2 text-krem"
                 >
                   Zamów online
                 </Link>
