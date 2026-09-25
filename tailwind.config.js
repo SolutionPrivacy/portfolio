@@ -15,6 +15,7 @@ export default {
       },
       fontFamily: {
         display: ["Fraunces", "Georgia", "serif"],
+        title: ["Cinzel", "Fraunces", "Georgia", "serif"],
         body: ["Jost", "system-ui", "sans-serif"],
       },
       letterSpacing: {

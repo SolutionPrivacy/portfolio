@@ -1,25 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-} from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { navItems, site } from "@/data/site";
 import { silk } from "./Reveal";
 import { Wordmark } from "./Logo";
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { scrollY } = useScroll();
   const navigate = useNavigate();
   const location = useLocation();
   const reduce = useReducedMotion();
-
-  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 40));
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -59,13 +49,14 @@ export function Navbar() {
         className="fixed inset-x-0 top-0 z-50"
         style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
       >
-        <motion.div
+        <div
           className="relative"
-          animate={{
-            backgroundColor: scrolled ? "rgba(11,9,8,0.9)" : "rgba(11,9,8,0)",
-            backdropFilter: scrolled ? "blur(14px)" : "blur(0px)",
+          style={{
+            background: "linear-gradient(180deg, rgba(4,3,3,0.97), rgba(12,9,7,0.9))",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            boxShadow: "0 6px 22px rgba(0,0,0,0.45)",
           }}
-          transition={{ duration: 0.55, ease: silk }}
         >
           <nav className="shell flex h-20 items-center justify-between">
             <Link
@@ -85,7 +76,7 @@ export function Navbar() {
                     type="button"
                     onClick={() => goTo(item.href)}
                     data-no-glow
-                    className="group relative px-3.5 py-2 text-[0.8rem] font-light tracking-wide2 text-krem transition-[color,transform] duration-300 hover:scale-105 hover:text-zloto"
+                    className="group relative px-3.5 py-2 text-[0.8rem] font-normal tracking-wide2 text-krem transition-[color,transform] duration-300 hover:scale-105 hover:text-zloto"
                   >
                     {item.label}
                     <span
@@ -129,7 +120,7 @@ export function Navbar() {
             aria-hidden
             className="pointer-events-none absolute bottom-0 left-1/2 h-0.5 w-[min(200px,40%)] -translate-x-1/2 bg-gradient-to-r from-transparent via-zloto to-transparent"
           />
-        </motion.div>
+        </div>
       </motion.header>
 
       <AnimatePresence>

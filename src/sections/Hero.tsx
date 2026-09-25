@@ -7,6 +7,7 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
+import { Embers } from "@/components/Embers";
 import { Logo } from "@/components/Logo";
 import { backgrounds } from "@/data/images";
 import { site } from "@/data/site";
@@ -77,7 +78,7 @@ export function Hero() {
     <section
       ref={ref}
       id="poczatek"
-      className="relative h-[100svh] overflow-hidden bg-wegiel"
+      className="relative mt-20 h-[calc(100svh-5rem)] min-h-[520px] max-h-[860px] overflow-hidden bg-wegiel"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -113,22 +114,38 @@ export function Hero() {
               initial={{ scale: reduce ? 1 : 1.08 }}
               animate={{ scale: 1 }}
               transition={{ duration: 7.5, ease: "easeOut" }}
-              style={{ objectPosition: backgrounds[index].focus ?? "center" }}
+              style={{
+                objectPosition: backgrounds[index].focus ?? "center",
+                filter: `brightness(${backgrounds[index].brightness ?? 1})`,
+              }}
               className="h-full w-full select-none object-cover"
+            />
+            {/* Ciemna winieta dookoła kadru (dla zdjęć, które tego wymagają). */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                opacity: backgrounds[index].vignette ?? 0.35,
+                background:
+                  "radial-gradient(ellipse 75% 70% at 50% 45%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.95) 100%)",
+              }}
             />
           </motion.div>
         </AnimatePresence>
       </motion.div>
 
-      {/* Przyciemnienie: góra pod menu, dół pod kropki i tekst. */}
+      {/* Przyciemnienie + płynne wtopienie dołu w czarne tło strony. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-wegiel/45"
+        className="pointer-events-none absolute inset-0 z-[1] bg-wegiel/35"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(11,9,8,0.65), rgba(11,9,8,0) 35%), linear-gradient(0deg, rgba(11,9,8,0.85), rgba(11,9,8,0) 45%)",
+            "linear-gradient(0deg, #0B0908 0%, rgba(11,9,8,0.97) 5%, rgba(11,9,8,0.86) 13%, rgba(11,9,8,0.62) 24%, rgba(11,9,8,0.32) 38%, rgba(11,9,8,0.08) 52%, rgba(11,9,8,0) 62%), linear-gradient(rgba(11,9,8,0.5), rgba(11,9,8,0) 22%)",
         }}
       />
+
+      {/* Iskry znad pieca. */}
+      <Embers className="z-[1] mix-blend-screen" />
 
       {/* --- ZAWARTOŚĆ SLAJDU --- */}
       <div className="pointer-events-none relative z-[2] flex h-full flex-col items-center justify-center px-6">
@@ -137,7 +154,7 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.7, ease: silk, delay: 0.15 }}
           style={reduce ? undefined : { y: logoY }}
-          className="w-[min(82vw,34rem)]"
+          className="w-[min(82vw,34rem,62svh)]"
         >
           <Logo className="h-auto w-full" />
         </motion.div>
@@ -161,7 +178,7 @@ export function Hero() {
 
         <motion.div
           style={reduce ? undefined : { opacity: ctaOpacity, y: ctaY }}
-          className="pointer-events-auto mt-10"
+          className="pointer-events-auto mt-8 sm:mt-10"
         >
           <motion.div
             initial="hidden"
@@ -215,7 +232,7 @@ export function Hero() {
       {!reduce && (
         <motion.div
           style={{ opacity: ctaOpacity }}
-          className="pointer-events-none absolute bottom-16 left-1/2 z-[2] -translate-x-1/2 text-center"
+          className="pointer-events-none absolute bottom-16 left-1/2 z-[2] hidden -translate-x-1/2 text-center [@media(min-height:760px)]:block"
         >
           <p className="mb-3 text-[0.68rem] tracking-wide3 text-krem/55">przewiń</p>
           <motion.div

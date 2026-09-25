@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import { CountUp } from "@/components/CountUp";
 import { Parallax } from "@/components/Parallax";
 import { site } from "@/data/site";
 import { Reveal, RevealItem, Stagger } from "@/components/Reveal";
@@ -13,15 +15,15 @@ const paragraphs = [
 
 export function Story() {
   return (
-    <section id="historia" className="relative py-28 sm:py-40">
+    <section id="historia" className="relative pb-28 pt-8 sm:pb-40 sm:pt-12">
       <div className="shell">
         <Parallax distance={40}>
         <div className="glass mx-auto max-w-4xl px-7 py-16 sm:px-14 sm:py-20">
           <Reveal>
-            <p className="text-[0.7rem] tracking-wide3 text-zar">O nas</p>
+            <p className="gold-shimmer font-title text-[1.4rem] font-medium tracking-[0.34em]">O nas</p>
             <h2 className="mt-7 font-display text-[clamp(2.2rem,5.5vw,3.8rem)] font-light leading-[1.05] text-krem">
               Pizzeria Bona
-              <span className="block italic text-zloto">w Sierpcu</span>
+              <span className="gold-shimmer block italic">w Sierpcu</span>
             </h2>
             <div className="mt-9 h-px w-16 bg-zloto/50" />
           </Reveal>
@@ -38,9 +40,21 @@ export function Story() {
 
           <Reveal delay={0.15} className="mt-14">
             <div className="flex flex-wrap gap-x-14 gap-y-8 border-t border-krem/10 pt-10">
-              {site.founded && <Stat value={String(site.founded)} label="Rok założenia" />}
-              <Stat value="4,1 / 5" label="Średnia ocena w Google" />
-              <Stat value="900+" label="Opinii w sieci" />
+              {site.founded && (
+                <Stat
+                  value={<CountUp from={site.founded - 90} to={site.founded} duration={2.4} />}
+                  label="Rok założenia"
+                />
+              )}
+              <Stat
+                value={
+                  <>
+                    <CountUp to={4.1} decimals={1} /> / 5
+                  </>
+                }
+                label="Średnia ocena w Google"
+              />
+              <Stat value={<CountUp to={900} suffix="+" />} label="Opinii w sieci" />
             </div>
           </Reveal>
         </div>
@@ -50,7 +64,7 @@ export function Story() {
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function Stat({ value, label }: { value: ReactNode; label: string }) {
   return (
     <div>
       <p className="font-display text-3xl font-light text-zloto">{value}</p>
