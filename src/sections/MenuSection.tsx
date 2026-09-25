@@ -19,9 +19,9 @@ export function MenuSection() {
   const hidden = active.dishes.length - preview.length;
 
   return (
-    <section id="karta" className="relative py-28 sm:py-40">
+    <section id="karta" className="relative py-8 sm:py-12">
       <div className="shell">
-        <div className="glass px-6 py-16 sm:px-12 sm:py-20">
+        <div className="glass px-6 py-12 sm:px-12 sm:py-14">
           <Reveal className="text-center">
             <p className="text-[0.7rem] tracking-wide3 text-zar">Karta</p>
             <h2 className="mt-7 font-display text-[clamp(2.2rem,5.5vw,3.8rem)] font-light leading-tight text-krem">

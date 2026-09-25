@@ -17,6 +17,10 @@ export const site = {
   facebookUrl: "https://www.facebook.com/p/Pizzeria-Bona-Sierpc-100087435266183/",
   /** Rok założenia restauracji — uzupełnij, a pojawi się w sekcji „O nas”. */
   founded: 1993 as number | undefined,
+  /** Ocena w Google (ta sama liczba jest w sekcji „O nas”). */
+  rating: { value: 4.1, count: 900 },
+  googleReviewsUrl:
+    "https://www.google.com/search?sca_esv=382c7047bb274dd0&sxsrf=APpeQnsFwSguHcl-cH5CKdL_vfBuFAsZfw:1790303633906&q=pizzeria+bona&si=APenkKnzv9m99ToiohAuzpadUwbOz34nZJ3j2Ukmo5XOUYWAphYCBxo4CrznarMK8idZj7U3MGTFdzBerc9mLfS3RPKPJcs1AraAbYLQ8SoC8iAZT0PsBTM%3D&uds=AJ5uw1-4w3rW8QLAeBTvAuCjnp-gzPJjr1CNO4sj_cKAshi4A7t4Bh_o5Os-vNyEeHumh4zkomzkkfaNUxye30YG9HuFutmwn1TIOb5VlNTmk_qI08IAM4g&sa=X&ved=2ahUKEwiThY7h2IiXAxV-AdsEHep0PR4Q3PALegQIGxAE&biw=1912&bih=948&dpr=1",
   coords: { lat: 52.852115, lng: 19.6647425 },
 } as const;
 

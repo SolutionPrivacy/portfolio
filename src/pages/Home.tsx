@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Ornament className="pb-2 pt-8 sm:pt-10" />
+      <Ornament className="pb-0 pt-5 sm:pt-6" />
       <Story />
       <MenuSection />
       <Reservation />

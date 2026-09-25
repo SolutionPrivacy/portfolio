@@ -16,7 +16,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-wegiel/95 pb-12 pt-20 backdrop-blur-sm">
+    <footer className="relative bg-wegiel/95 pb-10 pt-10 backdrop-blur-sm">
       <div className="shell">
         <div className="hairline" />
 

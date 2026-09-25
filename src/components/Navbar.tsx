@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { navItems, site } from "@/data/site";
 import { silk } from "./Reveal";
 import { Wordmark } from "./Logo";
+import { RatingLink } from "./RatingLink";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -49,16 +50,8 @@ export function Navbar() {
         className="fixed inset-x-0 top-0 z-50"
         style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
       >
-        <div
-          className="relative"
-          style={{
-            background: "linear-gradient(180deg, rgba(4,3,3,0.97), rgba(12,9,7,0.9))",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            boxShadow: "0 6px 22px rgba(0,0,0,0.45)",
-          }}
-        >
-          <nav className="shell flex h-20 items-center justify-between">
+        <div className="topbar relative">
+          <nav className="flex h-20 w-full items-center gap-4 px-4 sm:px-8">
             <Link
               to="/"
               onClick={() => setOpen(false)}
@@ -69,7 +62,7 @@ export function Navbar() {
               <Wordmark className="h-11 w-auto" />
             </Link>
 
-            <ul className="hidden items-center gap-1 lg:flex">
+            <ul className="ml-auto hidden items-center gap-1 lg:flex">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <button
@@ -96,12 +89,16 @@ export function Navbar() {
               </li>
             </ul>
 
+            <RatingLink className="hidden xl:flex" />
+            <RatingLink compact className="hidden lg:flex xl:hidden" />
+            <RatingLink compact className="ml-auto flex lg:hidden" />
+
             <button
               type="button"
               aria-label={open ? "Zamknij menu" : "Otwórz menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[7px] lg:hidden"
+              className="relative z-50 -mr-1 flex h-10 w-10 flex-col items-center justify-center gap-[7px] lg:hidden"
             >
               <motion.span
                 animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}

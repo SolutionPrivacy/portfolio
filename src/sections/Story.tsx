@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CornerRibbon } from "@/components/CornerRibbon";
 import { CountUp } from "@/components/CountUp";
 import { Parallax } from "@/components/Parallax";
 import { site } from "@/data/site";
@@ -15,10 +16,11 @@ const paragraphs = [
 
 export function Story() {
   return (
-    <section id="historia" className="relative pb-28 pt-8 sm:pb-40 sm:pt-12">
+    <section id="historia" className="relative pb-8 pt-3 sm:pb-12 sm:pt-4">
       <div className="shell">
         <Parallax distance={40}>
-        <div className="glass mx-auto max-w-4xl px-7 py-16 sm:px-14 sm:py-20">
+        <div className="glass relative mx-auto max-w-4xl overflow-hidden px-7 py-12 sm:px-14 sm:py-14">
+          {site.founded && <CornerRibbon label={`OD ${site.founded}`} />}
           <Reveal>
             <p className="gold-shimmer font-title text-[1.4rem] font-medium tracking-[0.34em]">O nas</p>
             <h2 className="mt-7 font-display text-[clamp(2.2rem,5.5vw,3.8rem)] font-light leading-[1.05] text-krem">

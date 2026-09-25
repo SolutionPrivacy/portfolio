@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
+import { useIsMobile } from "./useIsMobile";
 
 /** Powolne, miękkie wyhamowanie — używane w całym serwisie. */
 const silk = [0.16, 1, 0.3, 1] as const;
@@ -38,8 +39,10 @@ export function Reveal({
   as = "div",
 }: RevealProps) {
   const reduce = useReducedMotion();
+  const mobile = useIsMobile();
   const Tag = motion[as];
   const { x, y } = offset[direction];
+  const k = mobile ? 0.4 : 1;
 
   if (reduce) {
     return <Tag className={className}>{children}</Tag>;
@@ -48,10 +51,10 @@ export function Reveal({
   return (
     <Tag
       className={className}
-      initial={{ opacity: 0, x, y }}
+      initial={{ opacity: 0, x: x * k, y: y * k }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, amount }}
-      transition={{ duration, delay, ease: silk }}
+      transition={{ duration: mobile ? duration * 0.6 : duration, delay: mobile ? 0 : delay, ease: silk }}
     >
       {children}
     </Tag>
@@ -78,14 +81,15 @@ export function Stagger({
   as = "div",
 }: StaggerProps) {
   const reduce = useReducedMotion();
+  const mobile = useIsMobile();
   const Tag = motion[as];
 
   const variants: Variants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: reduce ? 0 : step,
-        delayChildren: reduce ? 0 : delay,
+        staggerChildren: reduce ? 0 : mobile ? step * 0.4 : step,
+        delayChildren: reduce ? 0 : mobile ? 0 : delay,
       },
     },
   };
@@ -102,6 +106,11 @@ export function Stagger({
     </Tag>
   );
 }
+
+export const itemVariantsMobile: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: silk } },
+};
 
 export const itemVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -121,10 +130,11 @@ type RevealItemProps = {
 /** Dziecko <Stagger />. */
 export function RevealItem({ children, className, as = "div" }: RevealItemProps) {
   const reduce = useReducedMotion();
+  const mobile = useIsMobile();
   const Tag = motion[as];
 
   return (
-    <Tag className={className} variants={reduce ? undefined : itemVariants}>
+    <Tag className={className} variants={reduce ? undefined : mobile ? itemVariantsMobile : itemVariants}>
       {children}
     </Tag>
   );

@@ -9,11 +9,12 @@ import {
 } from "motion/react";
 import { Embers } from "@/components/Embers";
 import { Logo } from "@/components/Logo";
+import { useIsMobile } from "@/components/useIsMobile";
 import { backgrounds } from "@/data/images";
 import { site } from "@/data/site";
 
 const silk = [0.16, 1, 0.3, 1] as const;
-const AUTOPLAY_MS = 6500;
+const AUTOPLAY_MS = 3500;
 
 /**
  * Sekcja otwierająca: pokaz slajdów na całą wysokość ekranu.
@@ -25,7 +26,10 @@ const AUTOPLAY_MS = 6500;
  */
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
+  const reduceMotion = useReducedMotion();
+  const mobile = useIsMobile();
+  // Na telefonie ograniczamy ruch (paralaksa, powolny zoom, iskry) — tylko tam.
+  const reduce = reduceMotion || mobile;
   const count = backgrounds.length;
 
   const [[index, dir], setPage] = useState<[number, number]>([0, 1]);
@@ -42,10 +46,10 @@ export function Hero() {
 
   // Autoodtwarzanie; ręczna zmiana slajdu (zmiana `index`) zeruje odliczanie.
   useEffect(() => {
-    if (reduce || paused) return;
+    if (reduceMotion || paused) return;
     const t = window.setTimeout(() => paginate(1), AUTOPLAY_MS);
     return () => window.clearTimeout(t);
-  }, [index, paused, reduce, paginate]);
+  }, [index, paused, reduceMotion, paginate]);
 
   // Pozostałe zdjęcia doładowują się z wyprzedzeniem, żeby slajd nie mrugał.
   useEffect(() => {
@@ -103,7 +107,7 @@ export function Hero() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: reduce ? 0 : 1.1, ease: silk }}
+            transition={{ duration: reduceMotion ? 0 : mobile ? 0.6 : 1.1, ease: silk }}
             className="absolute inset-0"
           >
             <motion.img
@@ -144,8 +148,8 @@ export function Hero() {
         }}
       />
 
-      {/* Iskry znad pieca. */}
-      <Embers className="z-[1] mix-blend-screen" />
+      {/* Iskry znad pieca (nie na telefonie). */}
+      {!mobile && <Embers className="z-[1] mix-blend-screen" />}
 
       {/* --- ZAWARTOŚĆ SLAJDU --- */}
       <div className="pointer-events-none relative z-[2] flex h-full flex-col items-center justify-center px-6">
@@ -156,7 +160,7 @@ export function Hero() {
           style={reduce ? undefined : { y: logoY }}
           className="w-[min(82vw,34rem,62svh)]"
         >
-          <Logo className="h-auto w-full" />
+          <Logo className="h-auto w-full" still={mobile} />
         </motion.div>
 
         <motion.div

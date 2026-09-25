@@ -168,22 +168,36 @@ export function CartBar() {
         )}
       </AnimatePresence>
 
-      {/* Pływający przycisk */}
-      <motion.button
-        type="button"
-        onClick={() => setOpen(true)}
-        initial={{ y: 80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: silk }}
-        className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-5 btn-primary px-7 py-4 text-krem shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
+      {/* Pływający przycisk — po prawej stronie, poza szarymi kartami */}
+      <div
+        className="fixed bottom-5 right-3 z-50 lg:bottom-auto lg:right-5 lg:top-1/2 lg:-translate-y-1/2"
         style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}
       >
-        <span className="grid h-6 w-6 place-items-center rounded-full bg-krem/20 text-[0.75rem]">
-          {cart.count}
-        </span>
-        <span className="text-[0.82rem] tracking-wide2">Przejdź do kasy</span>
-        <span className="font-display text-base">{formatPrice(cart.total)}</span>
-      </motion.button>
+        <motion.button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label={`Przejdź do kasy — ${cart.count} szt., ${formatPrice(cart.total)}`}
+          initial={{ x: 80, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: silk }}
+          className="btn-primary flex items-center gap-3 px-4 py-3 shadow-[0_18px_50px_rgba(0,0,0,0.55)] lg:w-[7rem] lg:flex-col lg:gap-2.5 lg:px-3 lg:py-5"
+        >
+          <span className="relative grid h-7 w-7 place-items-center text-krem">
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 4h2.2l2 11h10.4l2-8H6.4" />
+              <circle cx="9.5" cy="19.5" r="1.4" />
+              <circle cx="16.5" cy="19.5" r="1.4" />
+            </svg>
+            <span className="absolute -right-2 -top-2 grid h-[1.15rem] min-w-[1.15rem] place-items-center rounded-full bg-krem px-1 text-[0.68rem] font-medium leading-none text-wegiel">
+              {cart.count}
+            </span>
+          </span>
+          <span className="whitespace-nowrap text-[0.78rem] tracking-wide2 lg:whitespace-normal lg:text-center lg:leading-snug">
+            Przejdź do kasy
+          </span>
+          <span className="font-display text-base">{formatPrice(cart.total)}</span>
+        </motion.button>
+      </div>
     </>
   );
 }

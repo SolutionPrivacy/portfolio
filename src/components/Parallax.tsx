@@ -1,5 +1,6 @@
 import { useRef, type ReactNode } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { useIsMobile } from "./useIsMobile";
 
 type ParallaxProps = {
   children: ReactNode;
@@ -14,7 +15,9 @@ type ParallaxProps = {
  */
 export function Parallax({ children, className, distance = 60 }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduceMotion = useReducedMotion();
+  const mobile = useIsMobile();
+  const reduce = reduceMotion || mobile;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
