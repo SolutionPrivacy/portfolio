@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { ScrollBackground } from "@/components/ScrollBackground";
 import { CartBar } from "@/components/CartBar";
 import { CartProvider } from "@/cart/CartContext";
+import { useCursorGlow } from "@/components/useCursorGlow";
 import { silk } from "@/components/Reveal";
 import Home from "@/pages/Home";
 
@@ -28,6 +29,7 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 export default function App() {
   const location = useLocation();
   const reduce = useReducedMotion();
+  useCursorGlow();
 
   useEffect(() => {
     if (!location.hash) window.scrollTo(0, 0);
