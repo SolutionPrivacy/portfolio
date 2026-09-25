@@ -181,3 +181,51 @@ L114,40
 Q100,30 94,46
 Z
 `;
+
+/**
+ * Sam napis „Bona” z logo — do nagłówka. Te same warstwy co w <Logo />
+ * (cień, jasna faza, czerwone lico z gradientem), własne id gradientów,
+ * więc działa też, gdy <Logo /> nie jest na stronie.
+ */
+export function Wordmark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 250 100" className={className} role="img" aria-label="Bona">
+      <defs>
+        <linearGradient id="bonaWmFace" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#EE3B2C" />
+          <stop offset="50%" stopColor="#CC1A1C" />
+          <stop offset="100%" stopColor="#870B11" />
+        </linearGradient>
+        <filter id="bonaWmDrop" x="-20%" y="-30%" width="140%" height="170%">
+          <feDropShadow dx="0" dy="3" stdDeviation="3.5" floodColor="#000" floodOpacity="0.6" />
+        </filter>
+      </defs>
+      <g
+        filter="url(#bonaWmDrop)"
+        fontFamily="Fraunces, Georgia, serif"
+        fontSize="96"
+        fontWeight="500"
+        textAnchor="middle"
+        letterSpacing="1.5"
+      >
+        <text x="125" y="78" fill="#000" opacity="0.5" transform="translate(0,5)">
+          Bona
+        </text>
+        <text x="125" y="78" fill="#F4725C" opacity="0.95" transform="translate(-2.2,-2.6)">
+          Bona
+        </text>
+        <text
+          x="125"
+          y="78"
+          fill="url(#bonaWmFace)"
+          stroke="#40060A"
+          strokeWidth="3"
+          paintOrder="stroke"
+          strokeLinejoin="round"
+        >
+          Bona
+        </text>
+      </g>
+    </svg>
+  );
+}

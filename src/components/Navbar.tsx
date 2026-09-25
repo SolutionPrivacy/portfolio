@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 import { navItems, site } from "@/data/site";
 import { silk } from "./Reveal";
+import { Wordmark } from "./Logo";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -59,6 +60,7 @@ export function Navbar() {
         style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
       >
         <motion.div
+          className="relative"
           animate={{
             backgroundColor: scrolled ? "rgba(11,9,8,0.9)" : "rgba(11,9,8,0)",
             backdropFilter: scrolled ? "blur(14px)" : "blur(0px)",
@@ -69,9 +71,11 @@ export function Navbar() {
             <Link
               to="/"
               onClick={() => setOpen(false)}
-              className="font-display text-2xl font-light tracking-wide2 text-krem"
+              aria-label="Bona — strona główna"
+              data-no-glow
+              className="block transition-transform duration-300 hover:scale-105"
             >
-              Bona
+              <Wordmark className="h-11 w-auto" />
             </Link>
 
             <ul className="hidden items-center gap-1 lg:flex">
@@ -80,14 +84,13 @@ export function Navbar() {
                   <button
                     type="button"
                     onClick={() => goTo(item.href)}
-                    className="group relative px-3.5 py-2 text-[0.8rem] font-light tracking-wide2 text-krem/82 transition-colors duration-500 hover:text-krem"
+                    data-no-glow
+                    className="group relative px-3.5 py-2 text-[0.8rem] font-light tracking-wide2 text-krem transition-[color,transform] duration-300 hover:scale-105 hover:text-zloto"
                   >
                     {item.label}
-                    <motion.span
-                      className="absolute inset-x-3.5 bottom-1 h-px origin-left bg-zar"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.45, ease: silk }}
+                    <span
+                      aria-hidden
+                      className="absolute bottom-0.5 left-1/2 h-px w-0 -translate-x-1/2 bg-zloto transition-[width] duration-300 group-hover:w-[60%]"
                     />
                   </button>
                 </li>
@@ -121,6 +124,11 @@ export function Navbar() {
               />
             </button>
           </nav>
+          {/* Cienka złoto-czerwona linia pod paskiem (jak na haveli.com.pk). */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 left-1/2 h-0.5 w-[min(200px,40%)] -translate-x-1/2 bg-gradient-to-r from-transparent via-zloto to-transparent"
+          />
         </motion.div>
       </motion.header>
 

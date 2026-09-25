@@ -60,6 +60,7 @@
 @layer components {
   .btn-primary,
   .btn-ghost {
+    display: inline-block;
     position: relative;
     overflow: hidden;
     isolation: isolate;

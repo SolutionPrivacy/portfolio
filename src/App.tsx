@@ -3,7 +3,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ScrollBackground } from "@/components/ScrollBackground";
 import { CartBar } from "@/components/CartBar";
 import { CartProvider } from "@/cart/CartContext";
 import { useCursorGlow } from "@/components/useCursorGlow";
@@ -38,7 +37,6 @@ export default function App() {
   return (
     <CartProvider>
     <div className="flex min-h-[100svh] flex-col">
-      <ScrollBackground />
       <Navbar />
 
       <Suspense fallback={<PageFallback />}>
